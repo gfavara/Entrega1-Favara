@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+<h1>Productoras disponibles</h1>
+
+<div>
+    <table class="table-secondary">
+        <form action="{% url 'productora_resul' %}" method="get">
+            <p>
+                Nombre Productora: <input type="text" name="nombre_productora">
+                <input class="btn btn-primary" type="submit" value="Buscar Productora">
+                
+            </p>
+        </form>
+        
+    
+    <ul>
+        {% for productora in productoras %}
+            <li>{{productora.nombre}} - {{productora.inicio_act}} - {{productora.pais}}</li>
+        {% endfor%}
+    </ul>
+    </table>
+    <a class="btn btn-secondary" href="{% url 'produ' %}">Volver</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+<div class="container" >
+    <h3>Buscar Productora</h3>
+    
+    <table>
+        <form action="{% url 'productora_resul' %}" method="get">
+            <p>
+                Nombre Productora: <input type="text" name="nombre_productora">
+                <input class="btn btn-primary" type="submit" value="Buscar Productora">
+            </p>
+        </form>
+    </table>
+    
+    
+    <p>------------------------------------------------------------------------------------------------</p>
+
+</div>
+
+
+<div class="container" >
+    <h3>Crear Productora</h3>
+
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{formulario.as_p}}
+        <input class="btn btn-primary" type="submit" value="Guardar Productora">
+    
+    </form>
+    <p></p>
+    {% comment %} <a class="btn btn-secondary" href="{% url 'produ' %}">Volver</a> {% endcomment %}
+</div>
+{% endblock %}
+

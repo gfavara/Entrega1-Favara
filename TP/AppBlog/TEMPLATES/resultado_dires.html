@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+
+<div>
+    <table class="table-secondary">
+        <form action="{% url 'director_resul' %}" method="get">
+            <p>
+                Nombre Director: <input type="text" name="nombre_director">
+                <input class="btn btn-primary" type="submit" value="Buscar Director">
+                
+            </p>
+        </form>
+        
+    
+    <ul>
+        {% for director in directores %}
+            <li>{{director.apellido}}, {{director.nombre}} - {{director.fecha_nac}} - {{director.nacionalidad}}</li>
+        {% endfor%}
+    </ul>
+    </table>
+    <a class="btn btn-secondary" href="{% url 'dires' %}">Volver</a>
+</div>
+
+{% endblock %}

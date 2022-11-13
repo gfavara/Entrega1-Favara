@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+<div class="container" >
+    <h3>Buscar Director</h3>
+    
+    <table>
+        <form action="{% url 'director_resul' %}" method="get">
+            <p>
+                Nombre Director: <input type="text" name="nombre_director">
+                <input class="btn btn-primary" type="submit" value="Buscar Director">
+            </p>
+        </form>
+    </table>
+    
+    
+    <p>------------------------------------------------------------------------------------------------</p>
+
+</div>
+
+
+<div class="container" >
+    <h3>Crear Director</h3>
+
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{formulario.as_p}}
+        <input class="btn btn-primary" type="submit" value="Guardar Director">
+    
+    </form>
+    <p></p>
+   
+</div>
+{% endblock %}
+
