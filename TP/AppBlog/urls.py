@@ -8,5 +8,6 @@ urlpatterns = [
     path("produ/", produ, name="produ"),
     path("productoras/buscar/resultados/", resultados_busqueda_productoras, name="productora_resul"),
     path("directores/buscar/resultados/", resultados_busqueda_dires, name="director_resul"),
+    path("peliculas/buscar/resultados/", resultados_busqueda_pelis, name="peli_resul"),
     
 ]
