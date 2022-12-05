@@ -19,7 +19,7 @@
         <p>No se encuentran peliculas</p>
         {% endif %}
         {% for peli in peliculas %}
-            <li>{{peli.titulo}} - {{peli.fecha_Estreno}} - {{peli.genero}} - {{peli.director}} - {{peli.productora}} - {{peli.calificacion}}</li>
+            <li>{{peli.titulo}} - {{peli.fecha_Estreno}} <a class="btn btn-warning" href="{% url 'pelicula-edit' peli.id %}">  Editar</a> <a class="btn btn-danger" href="{% url 'pelicula-delete' peli.id %}">Borrar</a></li>
         {% endfor%}
     </ul>
     </table>

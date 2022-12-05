@@ -14,5 +14,13 @@ urlpatterns = [
     path("logout/", cerrar_sesion, name="auth-logout"),
     path("perfil/editar/", editar_perfil, name="auth-editar-perfil"),
     path("perfil/avatar/", agregar_avatar, name="auth-avatar"),
-    path('delete_item_dir/<int:id>', delete_item_director, name="delete_item_dir"),
+    path("directores/borrar/<pk>", directorDelete.as_view(), name="director-delete"),
+    path("directores/actualizar/<pk>", directorEdit.as_view(), name="director-edit"),
+    path("directores/listar/", directorList.as_view(), name="director-list"),
+    path("directores/detalle/<pk>", directorDetail.as_view(), name="director-detail"),
+    path("peliculas/borrar/<pk>", peliculaDelete.as_view(), name="pelicula-delete"),
+    path("peliculas/actualizar/<pk>", peliculaEdit.as_view(), name="pelicula-edit"),
+    path("peliculas/listar/", peliculaList.as_view(), name="pelicula-list"),
+    path("peliculas/detalle/<pk>", peliculaDetail.as_view(), name="pelicula-detail"),
+
 ]

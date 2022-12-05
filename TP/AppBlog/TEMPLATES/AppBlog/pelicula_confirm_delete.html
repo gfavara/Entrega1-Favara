@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        Desea borrar la pelicula: '{{object.titulo}}'?
+        <input class="btn btn-danger" type="submit" value="Si">
+    </p>
+
+    <a class="btn btn-primary" href="{% url 'pelis' %}">Volver</a>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<h1>Detalle del Director</h1>
+
+<p>Nombre: {{director.apellido}}, {{director.nombre}}</p>
+<p>Fecha: {{director.fecha_nac}}</p>
+<p>Pais: {{director.nacionalidad}}</p>
+
+<a class="btn btn-secondary" href="{% url 'director-list' %}">Volver</a>
+{% endblock %}

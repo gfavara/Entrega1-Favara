@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        Desea borrar al director: '{{object.apellido}}'?
+        <input class="btn btn-danger" type="submit" value="Si">
+    </p>
+
+    <a class="btn btn-primary" href="{% url 'dires' %}">Volver</a>
+</form>
+</div>
+{% endblock %}

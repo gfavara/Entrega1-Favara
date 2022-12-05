@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="container">
+<ul>
+    {% for director in object_list %}
+        <li>
+            {{director.nombre}} {{director.apellido}} 
+            <a class="btn btn-secondary" href="{% url 'director-detail' director.id %}">Detalle</a> 
+            <a class="btn btn-warning" href="{% url 'director-edit' director.id %}">Actualizar</a> 
+            <a class="btn btn-danger" href="{% url 'director-delete' director.id %}">Borrar</a> 
+        </li>
+    {% endfor %}
+
+    
+</ul>
+</div>
+{% endblock %}

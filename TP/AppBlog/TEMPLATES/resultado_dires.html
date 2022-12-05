@@ -18,22 +18,9 @@
         {% if directores.count == 0 %}
         <p>No se encuentran directores</p>
         {% endif %}
-        <table>
+        <table class="table-primary" alignment="center">
         {% for director in directores %}
-            <tr>
-            <td>{{director.nombre}}</td>
-            <td>{{director.apellido}}</td>
-            <td>{{director.fecha_nac}}</td>
-            <td>{{director.nacionalidad}} </td>
-            <td>
-                <form method="POST">
-                    {% csrf_token %}
-                    
-                    <input type="hidden" value="{{director.id}}" name="delete_item_director">
-                    <input class="btn btn-danger" type="Submit" value="Borrar"></a>
-                </form>
-            </td>
-            </tr>
+            <li>{{director.apellido}} - {{director.nombre}}    <a class="btn btn-warning" href="{% url 'director-edit' director.id %}">  Editar</a> <a class="btn btn-danger" href="{% url 'director-delete' director.id %}">Borrar</a></li>
         {% endfor%}
         </table>
     </ul>
@@ -42,3 +29,4 @@
 </div>
 
 {% endblock %}
+

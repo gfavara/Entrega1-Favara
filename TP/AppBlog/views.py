@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
+from django.views.generic import ListView, DetailView,  UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def homepage(request):
@@ -44,10 +46,8 @@ def resultados_busqueda_pelis(request):
 
 @login_required
 def delete_item_director(request,id):
-    if request.method == 'POST':
-        Director.objects.get(id).delete()
-    
-    
+    Director.objects.get(id=id).delete()
+   
     # idd=request.GET["delete_item_dir"]
     # Director.objects.get(id=idd).delete()    
     directores = Director.objects.all()
@@ -202,3 +202,52 @@ def agregar_avatar(request):
     return render(request, "agregar_avatar.html", {"form":formulario})
 
 
+
+
+class directorDelete(DeleteView):
+
+    model = Director
+    success_url = "/dires/"
+
+class directorEdit(UpdateView):
+
+    model = Director
+    success_url = "/dires/"
+    fields = ["fecha_nac", "nacionalidad"]
+
+class directorList(LoginRequiredMixin, ListView):
+
+    model = Director
+    template_name = "list_director.html"
+
+
+class directorDetail(DetailView):
+
+    model = Director
+    template_name = "detail_director.html"
+
+
+
+
+
+class peliculaDelete(DeleteView):
+
+    model = Pelicula
+    success_url = "/pelis/"
+
+class peliculaEdit(UpdateView):
+
+    model = Pelicula
+    success_url = "/pelis/"
+    fields = ["titulo", "director"]
+
+class peliculaList(LoginRequiredMixin, ListView):
+
+    model = Pelicula
+    template_name = "pelicula_list.html"
+
+
+class peliculaDetail(DetailView):
+
+    model = Pelicula
+    template_name = "detail_pelicula.html"
