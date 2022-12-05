@@ -2,9 +2,9 @@
 
 
 {% block contenido %}
-<h3>Directores disponibles</h3>
-<div>
-    <table class="table-secondary">
+<div class="container">
+    <h3>Directores  disponibles</h3>
+    <table class="table-primary" alignment="center">
         <form action="{% url 'director_resul' %}" method="get">
             <p>
                 Nombre Director: <input type="text" name="nombre_director">
@@ -15,9 +15,27 @@
         
     
     <ul>
+        {% if directores.count == 0 %}
+        <p>No se encuentran directores</p>
+        {% endif %}
+        <table>
         {% for director in directores %}
-            <li>{{director.apellido}}, {{director.nombre}} - {{director.fecha_nac}} - {{director.nacionalidad}}</li>
+            <tr>
+            <td>{{director.nombre}}</td>
+            <td>{{director.apellido}}</td>
+            <td>{{director.fecha_nac}}</td>
+            <td>{{director.nacionalidad}} </td>
+            <td>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <input type="hidden" value="{{director.id}}" name="delete_item_director">
+                    <input class="btn btn-danger" type="Submit" value="Borrar"></a>
+                </form>
+            </td>
+            </tr>
         {% endfor%}
+        </table>
     </ul>
     </table>
     <a class="btn btn-secondary" href="{% url 'dires' %}">Volver</a>

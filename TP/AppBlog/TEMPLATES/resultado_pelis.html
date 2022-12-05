@@ -3,7 +3,7 @@
 
 {% block contenido %}
 <h3>Peliculas  disponibles</h3>
-<div>
+<div class="container">
     <table class="table-secondary">
         <form action="{% url 'peli_resul' %}" method="get">
             <p>
@@ -15,6 +15,9 @@
         
     
     <ul>
+        {% if peliculas.count == 0 %}
+        <p>No se encuentran peliculas</p>
+        {% endif %}
         {% for peli in peliculas %}
             <li>{{peli.titulo}} - {{peli.fecha_Estreno}} - {{peli.genero}} - {{peli.director}} - {{peli.productora}} - {{peli.calificacion}}</li>
         {% endfor%}

@@ -4,7 +4,7 @@
 {% block contenido %}
 <h3>Productoras disponibles</h3>
 
-<div>
+<div class="container">
     <table class="table-secondary">
         <form action="{% url 'productora_resul' %}" method="get">
             <p>
@@ -16,9 +16,15 @@
         
     
     <ul>
+        {% if productoras.count == 0 %}
+        <p>No se encuentran productoras</p>
+        {% endif %}
+
         {% for productora in productoras %}
-            <li>{{productora.nombre}} - {{productora.inicio_act}} - {{productora.pais}}</li>
+        <li>{{productora.nombre}} - {{productora.inicio_act}} - {{productora.pais}}</li>
         {% endfor%}
+
+
     </ul>
     </table>
     <a class="btn btn-secondary" href="{% url 'produ' %}">Volver</a>

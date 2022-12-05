@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+
+{% block contenido %}
+
+{% if errors %}
+    <p> Error: {{errors}}</p>
+{% endif %}
+
+<br>
+<br>
+<form method="post"  >
+    <div class="form-tex">
+    {% csrf_token %}
+
+    {{ formulario.as_p }}
+
+    <input type="submit" value="Registrar" class="btn btn-primary">
+    </div>
+</form>
+
+<p> Ya tenes cuenta? <a href="{% url 'auth-login'%}">Inicia sesion!</a> </p>
+{% endblock %}
