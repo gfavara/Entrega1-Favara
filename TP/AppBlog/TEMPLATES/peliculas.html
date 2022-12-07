@@ -24,7 +24,7 @@
 <div class="container" >
     <h3>Crear Pelicula</h3>
 
-    <form class="form" method="post">
+    <form class="form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{formulario.as_p}}
         <input class="btn btn-primary" type="submit" value="Guardar Pelicula">

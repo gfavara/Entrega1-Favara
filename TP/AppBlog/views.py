@@ -28,7 +28,7 @@ def about(request):
 @login_required
 def pelis(request):
     if request.method == "POST":
-        formulario = PeliculaForm(request.POST)
+        formulario = PeliculaForm(request.POST,files=request.FILES)
  
         if formulario.is_valid():
             # Recuperamos los datos del atributo cleaned_data
