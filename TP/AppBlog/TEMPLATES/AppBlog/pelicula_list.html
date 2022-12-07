@@ -4,12 +4,13 @@
 
 <div class="container">
 <ul>
-    {% for director in object_list %}
+    {% for pelicula in object_list %}
         <li>
-            {{director.nombre}} {{director.apellido}} 
-            <a class="btn btn-secondary" href="{% url 'director-detail' director.id %}">Detalle</a> 
-            <a class="btn btn-warning" href="{% url 'director-edit' director.id %}">Actualizar</a> 
-            <a class="btn btn-danger" href="{% url 'director-delete' director.id %}">Borrar</a> 
+            {{pelicula.titulo}} - {{pelicula.director}} - {{pelicula.fecha_Estreno}}
+            
+            <a class="btn btn-secondary" href="{% url 'pelicula-detail' pelicula.id %}">Detalle</a> 
+            <a class="btn btn-warning" href="{% url 'pelicula-edit' pelicula.id %}">Actualizar</a> 
+            <a class="btn btn-danger" href="{% url 'pelicula-delete' pelicula.id %}">Borrar</a> 
         </li>
     {% endfor %}
 

@@ -7,7 +7,7 @@
 {% if errors %}
     <p> Error: {{errors}}</p>
 {% endif %}
-
+<div class="container">
 <br>
 <br>
 <form method="post"  >
@@ -21,4 +21,5 @@
 </form>
 
 <p> Ya tenes cuenta? <a href="{% url 'auth-login'%}">Inicia sesion!</a> </p>
+</div>
 {% endblock %}

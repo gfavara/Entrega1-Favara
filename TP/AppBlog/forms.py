@@ -18,6 +18,7 @@ class PeliculaForm(forms.Form):
     director=forms.CharField(max_length=50)
     productora=forms.CharField(max_length=50)
     calificacion=forms.IntegerField()
+    portada = forms.ImageField()
 
 class DirectorForm(forms.Form):
 

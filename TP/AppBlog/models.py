@@ -10,6 +10,7 @@ class Pelicula(models.Model):
     director=models.CharField(max_length=50)
     productora=models.CharField(max_length=50)
     calificacion=models.IntegerField()
+    portada = models.ImageField(upload_to="media/imagenes/portadas", null=True,blank=True)
 
 class Director(models.Model):
 

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+<h1>Detalle de la Productora</h1>
+
+<p>Nombre: {{productora.titulo}}
+<p>Fecha: {{productora.inicio_act}}</p>
+<p>Pais: {{productora.pais}}</p>
+
+<a class="btn btn-secondary" href="{% url 'productora-list' %}">Volver</a>
+
+</div>
+{% endblock %}

@@ -1,5 +1,7 @@
 from django.urls import path
 from AppBlog.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", homepage, name="homepage"),
@@ -22,5 +24,10 @@ urlpatterns = [
     path("peliculas/actualizar/<pk>", peliculaEdit.as_view(), name="pelicula-edit"),
     path("peliculas/listar/", peliculaList.as_view(), name="pelicula-list"),
     path("peliculas/detalle/<pk>", peliculaDetail.as_view(), name="pelicula-detail"),
-
+    path("productoras/borrar/<pk>", productoraDelete.as_view(), name="productora-delete"),
+    path("productoras/actualizar/<pk>", productoraEdit.as_view(), name="productora-edit"),
+    path("productoras/listar/", productoraList.as_view(), name="productora-list"),
+    path("productoras/detalle/<pk>", productoraDetail.as_view(), name="productora-detail"),
+    path("about", about, name="about"),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

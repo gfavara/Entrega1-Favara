@@ -21,7 +21,7 @@
         {% endif %}
 
         {% for productora in productoras %}
-        <li>{{productora.nombre}} - {{productora.inicio_act}} - {{productora.pais}}</li>
+        <li>{{productora.nombre}} - {{productora.inicio_act}} - {{productora.pais}} <a class="btn btn-warning" href="{% url 'productora-edit' productora.id %}">  Editar</a> <a class="btn btn-danger" href="{% url 'productora-delete' productora.id %}">Borrar</a></li>
         {% endfor%}
 
 

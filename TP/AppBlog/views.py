@@ -19,6 +19,12 @@ def homepage(request):
         imagen_url = ""
     return render(request, 'homepage.html', {"imagen_url":imagen_url})
 
+
+def about(request):
+    
+    return render(request, 'about.html')
+
+
 @login_required
 def pelis(request):
     if request.method == "POST":
@@ -28,7 +34,7 @@ def pelis(request):
             # Recuperamos los datos del atributo cleaned_data
             data = formulario.cleaned_data
 
-            pelicula = Pelicula(titulo=data["titulo"],fecha_Estreno=data["fecha_Estreno"], genero=data["genero"], director=data["director"], productora=data["productora"], calificacion=data["calificacion"])
+            pelicula = Pelicula(titulo=data["titulo"],fecha_Estreno=data["fecha_Estreno"], genero=data["genero"], director=data["director"], productora=data["productora"], calificacion=data["calificacion"],portada=data["portada"])
 
             pelicula.save()
     formulario = PeliculaForm()    
@@ -44,15 +50,7 @@ def resultados_busqueda_pelis(request):
     peliculas = Pelicula.objects.filter(titulo__icontains=titulo)
     return render(request, "resultado_pelis.html", {"peliculas":peliculas})
 
-@login_required
-def delete_item_director(request,id):
-    Director.objects.get(id=id).delete()
-   
-    # idd=request.GET["delete_item_dir"]
-    # Director.objects.get(id=idd).delete()    
-    directores = Director.objects.all()
-    
-    return render(request,"resultado_dires.html", {"directores":directores})
+
 
 
 
@@ -239,7 +237,7 @@ class peliculaEdit(UpdateView):
 
     model = Pelicula
     success_url = "/pelis/"
-    fields = ["titulo", "director"]
+    fields = ["titulo", "director","portada"]
 
 class peliculaList(LoginRequiredMixin, ListView):
 
@@ -251,3 +249,29 @@ class peliculaDetail(DetailView):
 
     model = Pelicula
     template_name = "detail_pelicula.html"
+
+
+
+
+
+class productoraDelete(DeleteView):
+
+    model = Productora
+    success_url = "/produ/"
+
+class productoraEdit(UpdateView):
+
+    model = Productora
+    success_url = "/produ/"
+    fields = ["nombre", "pais"]
+
+class productoraList(LoginRequiredMixin, ListView):
+
+    model = Productora
+    template_name = "productora_list.html"
+
+
+class productoraDetail(DetailView):
+
+    model = Productora
+    template_name = "detail_productora.html"
