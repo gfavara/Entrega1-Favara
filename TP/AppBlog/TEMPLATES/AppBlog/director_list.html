@@ -8,8 +8,10 @@
         <li>
             {{director.nombre}} {{director.apellido}} 
             <a class="btn btn-secondary" href="{% url 'director-detail' director.id %}">Detalle</a> 
-            <a class="btn btn-warning" href="{% url 'director-edit' director.id %}">Actualizar</a> 
-            <a class="btn btn-danger" href="{% url 'director-delete' director.id %}">Borrar</a> 
+            {% if request.user.is_superuser %}
+                <a class="btn btn-warning" href="{% url 'director-edit' director.id %}">Actualizar</a> 
+                <a class="btn btn-danger" href="{% url 'director-delete' director.id %}">Borrar</a> 
+            {%endif%}
         </li>
     {% endfor %}
 

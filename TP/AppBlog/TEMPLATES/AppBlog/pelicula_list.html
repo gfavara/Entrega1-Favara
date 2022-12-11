@@ -7,12 +7,15 @@
     {% for pelicula in object_list %}
         <li>
             {{pelicula.titulo}} - {{pelicula.director}} - {{pelicula.fecha_Estreno}}
-            
-            <a class="btn btn-secondary" href="{% url 'pelicula-detail' pelicula.id %}">Detalle</a> 
-            <a class="btn btn-warning" href="{% url 'pelicula-edit' pelicula.id %}">Actualizar</a> 
-            <a class="btn btn-danger" href="{% url 'pelicula-delete' pelicula.id %}">Borrar</a> 
+           
+                <a class="btn btn-secondary" href="{% url 'pelicula-detail' pelicula.id %}">Detalle</a> 
+            {% if request.user.is_superuser %}
+                <a class="btn btn-warning" href="{% url 'pelicula-edit' pelicula.id %}">Actualizar</a> 
+                <a class="btn btn-danger" href="{% url 'pelicula-delete' pelicula.id %}">Borrar</a> 
+            {%endif%}
         </li>
     {% endfor %}
+    
 
     
 </ul>

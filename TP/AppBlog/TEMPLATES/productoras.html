@@ -22,6 +22,7 @@
 
 
 <div class="container" >
+    {% if request.user.is_superuser %}
     <h3>Crear Productora</h3>
 
     <form class="form" method="post">
@@ -32,6 +33,8 @@
     </form>
     <p></p>
     {% comment %} <a class="btn btn-secondary" href="{% url 'produ' %}">Volver</a> {% endcomment %}
+    {% endif %}
 </div>
+
 {% endblock %}
 

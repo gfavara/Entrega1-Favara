@@ -1,9 +1,7 @@
-# Entrega1-Favara
- TP FINAL CH
-De acuerdo a las condiciones se entrega:
+# Favara
+ TP FINAL
 
-Herencia HTML
-3 Clases en Models
-Por lo menos 1 form de carga para todas las clases del modelo
-Por lo menos 1 form de carga para buscar en BD
-
+Entrega FINAL TP
+Se entrega codigo en GitHub
+Se entrega video explicando funcionalidades de la app 
+Casos de pruebas 

@@ -23,6 +23,7 @@
 
 
 <div class="container" >
+    {% if request.user.is_superuser %}
     <h3>Crear Director</h3>
 
     <form class="form" method="post">
@@ -32,7 +33,7 @@
     
     </form>
     <p></p>
-   
+    {% endif %}
 </div>
 {% endblock %}
 
